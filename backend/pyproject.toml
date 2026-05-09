@@ -1,0 +1,13 @@
+[project]
+name = "diminished-reality-backend"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "numpy>=2.0",
+    "pillow>=10.0",
+    "pyturbojpeg>=1.7",
+    "rfdetr",
+    "supervision>=0.18",
+    "trackers>=2.0",
+    "websockets>=12.0",
+]

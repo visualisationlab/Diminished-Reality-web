@@ -1,1 +1,21 @@
+# Python
+.venv/
 venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+dist/
+
+# TensorRT caches
+*.engine
+*.trt
+*.timing_cache
+
+# Certificates
+cert/
+ca/
+
+# OS
+.DS_Store

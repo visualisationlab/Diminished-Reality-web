@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #000;
+  touch-action: none;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.native-blur-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: none;
+  overflow: hidden;
+}
+
+.native-blur-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.001);
+  will-change: transform, width, height, opacity, backdrop-filter;
+  contain: paint;
+}
+
+.overlay-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  padding: max(env(safe-area-inset-top, 16px), 16px) 16px 0;
+}
+
+.ctrl-btn {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  transition: background 0.15s, transform 0.15s;
+  touch-action: manipulation;
+}
+
+.ctrl-btn:active {
+  background: rgba(0, 0, 0, 0.55);
+  transform: scale(0.98);
+}
+
+.ctrl-btn svg {
+  width: 30px;
+  height: 30px;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: max(env(safe-area-inset-bottom, 12px), 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.status-dot.connected { background: #22c55e; }
+.status-dot.disconnected { background: #ef4444; }
+
+@media (min-width: 768px) {
+  .ctrl-btn {
+    width: 56px;
+    height: 56px;
+  }
+
+  .ctrl-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+}
